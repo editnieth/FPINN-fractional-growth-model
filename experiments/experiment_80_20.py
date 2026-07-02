@@ -36,7 +36,7 @@ tf.random.set_seed(123)
 # ============================
 
 data = pd.read_csv(
-    "../data/mobile_web_growth.csv"
+    "data/mobile_web_growth.csv"
 )
 
 
