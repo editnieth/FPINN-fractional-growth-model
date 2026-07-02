@@ -316,6 +316,10 @@ plt.xlabel("t")
 
 plt.ylabel("Percent")
 
-
-plt.savefig("results/fit_80_20.png", dpi=300, bbox_inches="tight")
+os.makedirs("results", exist_ok=True)
+plt.savefig(
+    "results/fit_80_20.png",
+    dpi=300,
+    bbox_inches="tight"
+)
 plt.show()
