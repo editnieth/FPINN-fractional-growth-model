@@ -4,6 +4,17 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
+import sys
+import os
+
+sys.path.append(
+    os.path.abspath(
+        os.path.join(
+            os.path.dirname(__file__),
+            ".."
+        )
+    )
+)
 
 from src.model import FPINN
 from src.caputo_L1 import caputo_L1
