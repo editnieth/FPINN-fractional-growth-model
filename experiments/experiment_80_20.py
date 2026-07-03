@@ -284,42 +284,64 @@ print("alpha =", alpha_est)
 # Prediction plot
 # ============================
 
-
-prediction = solution(
-    t_tensor
+t_prediction = np.linspace(
+    0,
+    (len(cuotas)-1)/(len(cuotas_80)-1),
+    len(cuotas)
+)
+t_prediction_tensor  = tf.cast(t_prediction, np.float32)
+predictions_full = solution(
+    t_prediction_tensor 
 ).numpy()
 
-
-
-plt.figure(figsize=(10,6))
-
-
+plt.figure(figsize=(10, 6))
+plt.plot(
+    t_prediction,
+    predictions_full,
+    linewidth=2.0,
+    color="black",
+    label="Neural network prediction"
+)
+plt.scatter(
+    t_prediction[N_train:],
+    cuotas[N_train:],
+    color="red",
+    s=15,
+    label="Test data (20%)"
+)
 plt.scatter(
     t[:-1],
     cuotas_80,
-    label="Mobile web data"
+    label="Training data (80%)",
+    color="blue",
+    s=15
 )
 
 
-plt.plot(
-    t,
-    prediction,
-    label="FPINN approximation"
+plt.title(
+    rf'80-20 validation: $\lambda={a_est:.4f}$, $\alpha={alpha_est:.4f}$'
 )
+plt.legend(loc=2, prop={'size': 8})
+plt.xlabel('t', fontsize=10)
+plt.ylabel('Percent', fontsize=10)
+plt.grid(True)
 
 
-plt.legend()
+ax = plt.gca()
+ax.spines['top'].set_linewidth(2.5)
+ax.spines['right'].set_linewidth(2.5)
+ax.spines['bottom'].set_linewidth(2.5)
+ax.spines['left'].set_linewidth(2.5)
 
-plt.grid()
-
-plt.xlabel("t")
-
-plt.ylabel("Percent")
 
 os.makedirs("results", exist_ok=True)
 plt.savefig(
-    "results/fit_80_20.png",
+    "results/validation_80_20.png",
     dpi=300,
     bbox_inches="tight"
 )
+
 plt.show()
+
+
+
