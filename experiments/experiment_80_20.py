@@ -234,7 +234,7 @@ def train_step():
 # ============================
 
 
-epochs = 100
+epochs = 10000
 
 
 loss_history = []
