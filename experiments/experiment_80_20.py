@@ -148,7 +148,7 @@ def solution(t):
 # ============================
 
 
-lambda_loss = 1
+lambda_loss = 1000
 
 
 
