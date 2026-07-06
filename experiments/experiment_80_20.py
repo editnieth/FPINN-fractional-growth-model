@@ -148,7 +148,7 @@ def solution(t):
 # ============================
 
 
-lambda_loss = 1000
+lambda_loss = 600
 
 
 
@@ -234,7 +234,7 @@ def train_step():
 # ============================
 
 
-epochs = 40000
+epochs = 100000
 
 
 loss_history = []
